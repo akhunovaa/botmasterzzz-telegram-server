@@ -12,5 +12,4 @@ RUN cd ./telegram-bot-api/build && \
 FROM alpine:3.7
 RUN apk add --update openssl libstdc++
 COPY --from=builder /server/telegram-bot-api/bin/telegram-bot-api /telegram-bot-api
-ENTRYPOINT ["/telegram-bot-api"]
 CMD telegram-bot-api --http-port 7116 --local
