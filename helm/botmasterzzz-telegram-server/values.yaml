@@ -1,0 +1,86 @@
+replicaCount: 1
+
+env: dev
+
+image:
+  repository: registry.yourapi.ru/botmasterzzz-telegram-server
+  appVersion: 2
+  pullPolicy: IfNotPresent
+
+volume:
+  path: /home/repository
+  name: yourapi-nfs-dev
+  mountPath: /home/repository
+  storageClassName: nfs-repository-dev
+  claim:
+    name: yourapi-nfs-repository-claim
+  nfs:
+    path: /home/repository
+    server: 10.107.255.41
+
+imagePullSecrets:
+  - name: ourhubpwd
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: LoadBalancer
+  port: 7116
+  targetPort: 7116
+
+telegram:
+  TELEGRAM_API_ID: 2486549
+  TELEGRAM_API_HASH: 196b60e1513acf86c1da330589987629
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+labelSelectors:
+  - app: botmasterzzz-telegram-server
