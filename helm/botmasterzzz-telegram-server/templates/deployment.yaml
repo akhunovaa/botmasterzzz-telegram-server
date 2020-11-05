@@ -40,4 +40,4 @@ spec:
           valueFrom:
             secretKeyRef:
               key: telegramApiHash
-              name: { { include "fullname" . } }
+              name: {{ include "fullname" . }}
