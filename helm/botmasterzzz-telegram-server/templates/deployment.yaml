@@ -30,7 +30,7 @@ spec:
         - name: host-volume
           persistentVolumeClaim:
             claimName: pvc1
-      env:
+        env:
         - name: "TELEGRAM_API_ID"
           valueFrom:
             secretKeyRef:
