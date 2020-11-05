@@ -17,6 +17,8 @@ pipeline {
         replicaCount = "${env.REPLICA_COUNT}"
         volumeName = get_volume()
         volumeClaimName = get_claim_volume()
+        TELEGRAM_API_ID = "2486549"
+        TELEGRAM_API_HASH = "196b60e1513acf86c1da330589987629"
     }
 
     agent any
