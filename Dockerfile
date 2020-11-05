@@ -7,9 +7,10 @@ RUN mkdir ./telegram-bot-api/build
 RUN cd ./telegram-bot-api/build && \
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=.. ..
 RUN cd ./telegram-bot-api/build && \
-  cmake --build . --target install --http-port 7116 --local --api-id 2486549 --api-hash 196b60e1513acf86c1da330589987629
+  cmake --build . --target install
 
 FROM alpine:3.7
 RUN apk add --update openssl libstdc++
 COPY --from=builder /server/telegram-bot-api/bin/telegram-bot-api /telegram-bot-api
 ENTRYPOINT ["/telegram-bot-api"]
+CMD telegram-bot-api --http-port 7116 --local --api-id 2486549 --api-hash 196b60e1513acf86c1da330589987629
