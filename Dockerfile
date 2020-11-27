@@ -8,7 +8,6 @@ RUN cd ./telegram-bot-api/build && \
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=.. ..
 RUN cd ./telegram-bot-api/build && \
   cmake --build . --target install
-
 FROM alpine:latest
 RUN apk add --update openssl libstdc++
 COPY --from=builder /server/telegram-bot-api/bin/telegram-bot-api /telegram-bot-api
