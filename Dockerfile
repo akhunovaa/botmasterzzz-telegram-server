@@ -1,6 +1,5 @@
 FROM alpine:latest as builder
 WORKDIR /server
-
 RUN apk add --update alpine-sdk linux-headers git zlib-dev openssl-dev gperf cmake
 RUN git clone --recursive https://github.com/tdlib/telegram-bot-api.git
 RUN mkdir ./telegram-bot-api/build
