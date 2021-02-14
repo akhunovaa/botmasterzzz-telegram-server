@@ -4,7 +4,7 @@ env: dev
 
 image:
   repository: registry.yourapi.ru/botmasterzzz-telegram-server
-  appVersion: 2
+  appVersion: 33
   pullPolicy: IfNotPresent
 
 volume:
