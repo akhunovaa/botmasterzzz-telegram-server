@@ -1,4 +1,4 @@
-FROM alpine:latest as builder
+FROM alpine:3.13 as builder
 WORKDIR /server
 RUN apk add --update alpine-sdk linux-headers git zlib-dev openssl-dev gperf cmake
 RUN git clone --recursive https://github.com/tdlib/telegram-bot-api.git
