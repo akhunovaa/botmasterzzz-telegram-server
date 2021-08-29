@@ -49,8 +49,8 @@ service:
 
 telegram:
   api:
-    id: "2486549"
-    hash: "196b60e1513acf86c1da330589987629"
+    id: ""
+    hash: ""
 
 ingress:
   enabled: false
